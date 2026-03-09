@@ -127,10 +127,76 @@
             height: auto !important;
 
         }
+
+        .metro-grid {
+            columns: 2 300px;
+            column-gap: 1rem;
+        }
+
+        .metro-item figure {
+            cursor: pointer;
+        }
+
+        .metro-item {
+            break-inside: avoid;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+
+        .metro-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .metro-item:hover img {
+            transform: scale(1.03);
+        }
+
+        /* Optional: make one item span taller by using a taller image naturally */
+        /* Or force a tile to be wider on larger screens */
+        @media screen and (min-width: 960px) {
+            .metro-grid {
+                columns: 3 250px;
+            }
+
+            .metro-item.metro-wide {
+                column-span: all;
+                /* spans full width */
+            }
+        }
+
+        #lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 9999;
+            cursor: pointer;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #lightbox.active {
+            display: flex;
+        }
+
+        #lightbox-img {
+            max-width: 90vw;
+            max-height: 90vh;
+            border-radius: 8px;
+            object-fit: contain;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.6);
+        }
     </style>
 </head>
 
 <body>
+    <div id="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="" onclick="event.stopPropagation()">
+    </div>
     <!-- Background Video-->
     <video autoplay muted loop id="myVideo">
         <source src="img/video.mp4" type="video/mp4">
@@ -400,7 +466,7 @@
     <section class="hero is-fullheight snap-scroll">
         <div class="hero-body">
             <div class="container has-text-centered">
-                <p class="title has-text-light">Meet Inuka and Gath</p>
+                <p class="title has-text-light">Meet The Team</p>
             </div>
         </div>
     </section>
@@ -458,15 +524,15 @@
             <div class="container has-text-centered has-text-left">
                 <h1 class="title ">
                     <figure class="image is-128x128">
-                        <img class="is-rounded" src="img/gath.png" alt="Gatheesha නිපුල්ම" />
+                        <img class="is-rounded" src="img/gath2.png" alt="Gatheesha නිපුල්ම" />
                     </figure>
                     <br>
                     Gatheesha නිපුල්ම
                 </h1>
-                <h2 class="subtitle">does the drawing stuff</h2>
-                <p>godtier in <b>photoshop, illustrator</b> <br>
-                    along with <b>gdscript, glsl, css, python</b></p><br>
-                <p>knows: <b>godot, unity, animate, after effects, CI/CD and shader stuff</b></p>
+                <h2 class="subtitle">does the visual stuff</h2>
+                <p>godtier in <b>godot, unity, photoshop, illustrator</b> <br>
+                    along with <b>gdscript, glsl, css, python and blender</b></p><br>
+                <p>knows: <b>animate, after effects, CI/CD and shader stuff</b></p>
                 <span class="icon-text profile-link my-4">
                     <a href="https://gatheesha.itch.io/" aria-label="Visit Gath's Itch.io page">
                         <span class="icon">
@@ -491,6 +557,49 @@
                     <a href="https://x.com/Gatheesha" aria-label="Visit Gath's X (formerly Twitter) profile">
                         <span class="icon">
                             <i class="fa-brands fa-x-twitter"></i>
+                        </span>
+                    </a>
+                </span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rashmi-->
+    <section class="hero is-fullheight snap-scroll">
+        <div class="hero-body">
+            <div class="container has-text-centered has-text-left">
+                <h1 class="title ">
+                    <figure class="image is-128x128">
+                        <img class="is-rounded" src="img/rashmi.png" alt="Gatheesha නිපුල්ම" />
+                    </figure>
+                    <br>
+                    Rashmi Ishcharya
+                </h1>
+                <h2 class="subtitle">does the drawing stuff</h2>
+                <p>godtier in <b>traditional art, digital art</b> <br>
+                    along with <b>photoshop, ibispaint and blender</b></p><br>
+                <p>knows: <b>godot, illustrator</b></p>
+                <span class="icon-text profile-link my-4">
+                    <a href="https://ravienx-001.itch.io/" aria-label="Visit Rashmi's Itch.io page">
+                        <span class="icon">
+                            <i class="fa-brands fa-itch-io"></i>
+                        </span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/rashmiishcharayajayasekara/"
+                        aria-label="Visit Rashmi's Linked-in">
+                        <span class="icon">
+                            <i class="fa-brands fa-linkedin"></i>
+                        </span>
+                    </a>
+                    <a href="https://www.youtube.com/channel/UCU6jYk1K8Gj0dxcQl3o3LPg?sub_conformation=1" Visit Rashmi's
+                        YouTube channel">
+                        <span class="icon">
+                            <i class="fa-brands fa-youtube"></i>
+                        </span>
+                    </a>
+                    <a href="https://www.instagram.com/rashmiishcharyajayasekara/" aria-label="Visit Rashmi's profile">
+                        <span class="icon">
+                            <i class="fa-brands fa-instagram"></i>
                         </span>
                     </a>
                 </span>
@@ -626,8 +735,80 @@
         </div>
     </section>
 
+    <!-- Why Work With Us-->
+    <section class="hero is-fullheight snap-scroll">
+        <div class="hero-body">
+            <div class="container has-text-centered">
+
+                <div class="container has-text-centered my-6">
+                    <p class="title has-text-light">Why Work With Us</p>
+                </div>
+
+                <div class="container grid is-col-min-12">
+
+                    <!-- Demo Projects Card -->
+                    <div class="cell">
+                        <div class="card has-equal-height">
+                            <div class="card-content">
+                                <p class="title is-5 has-text-left">
+                                    Functional Demo Projects
+                                </p>
+
+                                <p class="content has-text-left">
+                                    We often create <strong>dedicated demo scenes or small sample projects</strong> for
+                                    clients so they can see features working in a real environment and give feedback
+                                    early.
+                                </p>
+
+                                <p class="content has-text-left">
+                                    For example, we built a <strong>demo project showcasing projectile VFX</strong>
+                                    allowing the client to review how the effects behaved in-game before integrating
+                                    them
+                                    into their project.
+                                </p>
+                                <figure class="mt-4">
+                                    <figure class="image is-16by9">
+                                        <video class="has-ratio" autoplay loop muted playsinline>
+                                            <source src="img/vfx.mp4" type="video/mp4">
+                                        </video>
+                                    </figure>
+                                </figure>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Prototype Card -->
+                    <div class="cell">
+                        <div class="card has-equal-height">
+                            <div class="card-content">
+                                <p class="title is-5 has-text-left">
+                                    Prototypes to Confirm Mechanics
+                                </p>
+
+                                <p class="content has-text-left">
+                                    We’ve built <strong>multiple gameplay prototypes for clients</strong> specifically
+                                    to
+                                    confirm mechanics before moving into full development.
+                                </p>
+
+                                <p class="content has-text-left">
+                                    This helps ensure the core gameplay works as intended and allows both sides to align
+                                    on the mechanics early in the project.
+                                </p>
+                                        <figure class="image">
+                                            <img src="img/prototypes.gif">
+                                        </figure>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Client Projects -->
-    <!--  <section class="section snap-scroll">
+    <!-- <section class="section snap-scroll">
         <div class="container mb-6">
             <h1 class="title">Client Projects</h1>
             <h2 class="subtitle is-6">
@@ -699,7 +880,7 @@
                 </div>
             </div>
         </div>
-    </section>  -->
+    </section> -->
 
     <!-- Jam Games -->
     <section class="section snap-scroll">
@@ -746,7 +927,7 @@
                         </footer>
                     </div>
                 </div <!-- Yathura Card -->
-                <div class="column is-one-third snap-scroll">
+                <div class="column is-one-third">
                     <div class="card has-equal-height">
                         <div class="card-image">
                             <figure class="image is-4by3">
@@ -779,7 +960,7 @@
                 </div>
 
                 <!-- Kotu Card -->
-                <div class="column is-one-third snap-scroll">
+                <div class="column is-one-third">
                     <div class="card has-equal-height">
                         <div class="card-image">
                             <figure class="image is-4by3">
@@ -810,7 +991,7 @@
                 </div>
 
                 <!-- Aul Card -->
-                <div class="column is-one-third snap-scroll">
+                <div class="column is-one-third">
                     <div class="card has-equal-height">
                         <div class="card-image">
                             <figure class="image is-4by3">
@@ -842,7 +1023,7 @@
                 </div>
 
                 <!-- Bittara Card -->
-                <div class="column is-one-third snap-scroll">
+                <div class="column is-one-third">
                     <div class="card has-equal-height">
                         <div class="card-image">
                             <figure class="image is-4by3">
@@ -877,173 +1058,163 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <!--  <section class="hero is-fullheight snap-scroll">
-            <div class="hero-body">
-                <div class="container has-text-centered">
-                    <h2 class="title has-text-white">We are available to hire through
-                        <span class="has-text-success">Fiverr</span>
-                    </h2>
-                    <a href="https://www.fiverr.com/gatarita_games">
-                        <button class="button is-success"><b>Fiverr</b></button>
-                    </a>
+    <!-- Commisioned Artwork Section -->
+    <section class="section snap-scroll">
+        <div class="container mb-6">
+            <h1 class="title">Commissioned Artwork</h1>
+            <h2 class="subtitle is-6">
+                Featured artworks we made for clients.
+            </h2>
+        </div>
+        <div class="container">
+            <div class="metro-grid">
+                <div class="metro-item">
+                    <figure class="image" onclick="openLightbox('img/commissioned-art/beach.png', 'Beach artwork')">
+                        <img src="img/commissioned-art/beach.png" alt="Beach artwork">
+                        <figcaption class="has-text-centered is-size-7 mt-1">Beachcomber Simulator Steam Header Capsule
+                        </figcaption>
+                    </figure>
+                </div>
+                <div class="metro-item">
+                    <figure class="image" onclick="openLightbox('img/commissioned-art/ape.jpg', 'Ape artwork')">
+                        <img src="img/commissioned-art/ape.jpg" alt="Ape artwork">
+                        <figcaption class="has-text-centered is-size-7 mt-1">Ap(e)ocalypse Promotional Artwork
+                        </figcaption>
+                    </figure>
+                </div>
+                <div class="metro-item">
+                    <figure class="image"
+                        onclick="openLightbox('img/commissioned-art/hoponit.jpg', 'Hop on it artwork')">
+                        <img src="img/commissioned-art/hoponit.jpg" alt="Hop on it artwork">
+                        <figcaption class="has-text-centered is-size-7 mt-1">Hop On It Steam Header Capsule</figcaption>
+                    </figure>
+                </div>
+                <div class="metro-item">
+                    <figure class="image" onclick="openLightbox('img/commissioned-art/chris.jpg', 'Chris artwork')">
+                        <img src="img/commissioned-art/chris.jpg" alt="Chris artwork">
+                        <figcaption class="has-text-centered is-size-7 mt-1">Everybody <3 Chris Albumart</figcaption>
+                    </figure>
+                </div>
+                <div class="metro-item">
+                    <figure class="image" onclick="openLightbox('img/commissioned-art/stage.png', 'Stage artwork')">
+                        <img src="img/commissioned-art/stage.png" alt="Stage artwork">
+                        <figcaption class="has-text-centered is-size-7 mt-1">Stage Cleared Steam Header Capsule
+                        </figcaption>
+                    </figure>
+                </div>
+                <!--<div class="metro-item">
+            <figure class="image" onclick="openLightbox('img/commissioned-art/icefinshing.png', 'Ice fishing artwork')">
+                <img src="img/commissioned-art/icefinshing.png" alt="Ice fishing artwork">
+                <figcaption class="has-text-centered is-size-7 mt-1">Ice Fishing Steam Header Capsule</figcaption>
+            </figure>
+        </div> -->
+                <div class="metro-item">
+                    <figure class="image"
+                        onclick="openLightbox('img/commissioned-art/icefishingv.png', 'Ice fishing v2 artwork')">
+                        <img src="img/commissioned-art/icefishingv.png" alt="Ice fishing v2 artwork">
+                        <figcaption class="has-text-centered is-size-7 mt-1">Ice Fishing Steam Vertical Capsule
+                        </figcaption>
+                    </figure>
                 </div>
 
-            </div>
-            <section class="section">
-                <div class="container">
-                    <nav class="level">
-                        <div class="level-item has-text-centered">
-                            <div>
-                                <p class="heading">Rating</p>
-                                <p class="title"><span class="icon-text">
-                                        <span class="icon">
-                                            <i class="fa-solid fa-star"></i>
-                                        </span>
-                                        <span>4.6</span>
-                                    </span>
-                            </div>
-                        </div>
-                        <div class="level-item has-text-centered">
-                            <div>
-                                <p class="heading">Completed Orders</p>
-                                <p class="title">14</p>
-                            </div>
-                        </div>
-                        <div class="level-item has-text-centered">
-                            <div>
-                                <p class="heading">Total Reviews</p>
-                                <p class="title">10</p>
-                            </div>
-                        </div>
-                        <div class="level-item has-text-centered">
-                            <div>
-                                <p class="heading">Total Plays</p>
-                                <p class="title">10K+</p>
-                            </div>
-                        </div>
-                    </nav>
+                <div class="metro-item">
+                    <figure class="image"
+                        onclick="openLightbox('img/commissioned-art/spacerunnerx.png', 'Space Runner X Steam Header Capsule')">
+                        <img src="img/commissioned-art/spacerunnerx.png" alt="Space Runner X Steam Header Capsule">
+                        <figcaption class="has-text-centered is-size-7 mt-1">Space Runner X Steam Header Capsule
+                        </figcaption>
+                    </figure>
                 </div>
-            </section>
-        </section>  -->
-    
-        <!-- Keep in touch -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
     <section class="hero is-fullheight snap-scroll">
         <div class="hero-body">
             <div class="container has-text-centered">
-                <h2 class="title has-text-white">Keep in Touch
-                </h2>
-                <p class="subtitle has-text-white">Feel free to reach out for any inquiries or collabs.</p>
+                <h2 class="title has-text-white">Ready to Start?</h2>
+                <p class="subtitle has-text-white mt-2">Hire us through Fiverr or Upwork <br> Currently available for
+                    new projects.</p>
+                <a href="https://www.fiverr.com/gatarita_games">
+                    <button class="button is-success">
+                        <span class="icon-text">
+                            <span class="icon"><i class="fa-solid fa-link"></i></span>
+                            <span><b>Hire us on Fiverr</b></span>
+                        </span>
+                    </button>
+                </a>
+                <a href="https://www.upwork.com/freelancers/~01916f04edc629566e?mp_source=share">
+                    <button class="button is-white">
+                        <span class="icon-text">
+                            <span class="icon"><i class="fa-solid fa-link"></i></span>
+                            <span><b>Hire us on Upwork</b></span>
+                        </span>
+                    </button>
+                </a>
+                <p class="subtitle has-text-white mt-6">or contact us directly.</p>
                 <a href="mailto:gataritagames@gmail.com">
                     <button class="button is-warning">
                         <span class="icon-text">
                             <span class="icon">
                                 <i class="fa-solid fa-envelope"></i>
                             </span>
-                            <span><b>Email</b></span>
+                            <span><b>Send us an Email</b></span>
                         </span>
                     </button>
                 </a>
+                <p class="subtitle has-text-white mt-6"></p>
+
             </div>
+
         </div>
+
+        <section class="section">
+            <div class="container">
+                <nav class="level">
+                    <div class="level-item has-text-centered">
+                        <div>
+                            <p class="heading">Rating</p>
+                            <p class="title"><span class="icon-text">
+                                    <span class="icon">
+                                        <i class="fa-solid fa-star"></i>
+                                    </span>
+                                    <span>4.9</span>
+                                </span>
+                        </div>
+                    </div>
+                    <div class="level-item has-text-centered">
+                        <div>
+                            <p class="heading">Completed Orders</p>
+                            <p class="title">43+</p>
+                        </div>
+                    </div>
+                    <div class="level-item has-text-centered">
+                        <div>
+                            <p class="heading">Total Reviews</p>
+                            <p class="title">32+</p>
+                        </div>
+                    </div>
+                    <div class="level-item has-text-centered">
+                        <div>
+                            <p class="heading">Total Plays</p>
+                            <p class="title">15K+</p>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </section>
     </section>
 
     <!-- Footer Section -->
     <section class="snap-scroll">
         <footer class="footer has-background-warning has-text-black">
             <div class="content has-text-centered">
-                <p>last updated <strong class="has-text-black">2025 September - gath</strong>,
+                <p>last updated <strong class="has-text-black">2026 March - gath</strong>,
                     powered by <strong><a class="has-text-black" href="https://bulma.io/">bulma</a></p></strong>
             </div>
         </footer>
     </section>
-    
-    <!-- Royalbutts Modal-->
-    <div id="modal-royalbutts" class="modal">
-        <div class="modal-background"></div>
-        <div class="modal-card">
-
-            <header class="modal-card-head">
-                <p class="modal-card-title">royal butts technical glibberish</p>
-                <button class="delete" aria-label="close"></button>
-            </header>
-            <section class="modal-card-body">
-                <div class="content">
-                    <h1>Hello World</h1>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla accumsan, metus ultrices
-                        eleifend
-                        gravida, nulla nunc varius lectus, nec rutrum justo nibh eu lectus. Ut vulputate semper dui.
-                        Fusce erat odio, sollicitudin vel erat vel, interdum mattis neque.</p>
-                    <h2>Second level</h2>
-                    <p>Curabitur accumsan turpis pharetra <strong>augue tincidunt</strong> blandit. Quisque
-                        condimentum
-                        maximus mi, sit amet commodo arcu rutrum id. Proin pretium urna vel cursus venenatis.
-                        Suspendisse potenti. Etiam mattis sem rhoncus lacus dapibus facilisis. Donec at dignissim
-                        dui.
-                        Ut et neque nisl.</p>
-                    <ul>
-                        <li>In fermentum leo eu lectus mollis, quis dictum mi aliquet.</li>
-                        <li>Morbi eu nulla lobortis, lobortis est in, fringilla felis.</li>
-                        <li>Aliquam nec felis in sapien venenatis viverra fermentum nec lectus.</li>
-                        <li>Ut non enim metus.</li>
-                    </ul>
-                    <h3>Third level</h3>
-                    <p>Quisque ante lacus, malesuada ac auctor vitae, congue <a href="#">non ante</a>. Phasellus
-                        lacus
-                        ex, semper ac tortor nec, fringilla condimentum orci. Fusce eu rutrum tellus.</p>
-                    <ol>
-                        <li>Donec blandit a lorem id convallis.</li>
-                        <li>Cras gravida arcu at diam gravida gravida.</li>
-                        <li>Integer in volutpat libero.</li>
-                        <li>Donec a diam tellus.</li>
-                        <li>Aenean nec tortor orci.</li>
-                        <li>Quisque aliquam cursus urna, non bibendum massa viverra eget.</li>
-                        <li>Vivamus maximus ultricies pulvinar.</li>
-                    </ol>
-                    <blockquote>Ut venenatis, nisl scelerisque sollicitudin fermentum, quam libero hendrerit ipsum,
-                        ut
-                        blandit est tellus sit amet turpis.</blockquote>
-                    <p>Quisque at semper enim, eu hendrerit odio. Etiam auctor nisl et <em>justo sodales</em>
-                        elementum.
-                        Maecenas ultrices lacus quis neque consectetur, et lobortis nisi molestie.</p>
-                    <p>Sed sagittis enim ac tortor maximus rutrum. Nulla facilisi. Donec mattis vulputate risus in
-                        luctus. Maecenas vestibulum interdum commodo.</p>
-                    <p>Suspendisse egestas sapien non felis placerat elementum. Morbi tortor nisl, suscipit sed mi
-                        sit
-                        amet, mollis malesuada nulla. Nulla facilisi. Nullam ac erat ante.</p>
-                    <h4>Fourth level</h4>
-                    <p>Nulla efficitur eleifend nisi, sit amet bibendum sapien fringilla ac. Mauris euismod metus a
-                        tellus laoreet, at elementum ex efficitur.</p>
-                    <p>Maecenas eleifend sollicitudin dui, faucibus sollicitudin augue cursus non. Ut finibus
-                        eleifend
-                        arcu ut vehicula. Mauris eu est maximus est porta condimentum in eu justo. Nulla id iaculis
-                        sapien.</p>
-                    <p>Phasellus porttitor enim id metus volutpat ultricies. Ut nisi nunc, blandit sed dapibus at,
-                        vestibulum in felis. Etiam iaculis lorem ac nibh bibendum rhoncus. Nam interdum efficitur
-                        ligula
-                        sit amet ullamcorper. Etiam tristique, leo vitae porta faucibus, mi lacus laoreet metus, at
-                        cursus leo est vel tellus. Sed ac posuere est. Nunc ultricies nunc neque, vitae ultricies ex
-                        sodales quis. Aliquam eu nibh in libero accumsan pulvinar. Nullam nec nisl placerat, pretium
-                        metus vel, euismod ipsum. Proin tempor cursus nisl vel condimentum. Nam pharetra varius
-                        metus
-                        non pellentesque.</p>
-                    <h5>Fifth level</h5>
-                    <p>Aliquam sagittis rhoncus vulputate. Cras non luctus sem, sed tincidunt ligula. Vestibulum at
-                        nunc
-                        elit. Praesent aliquet ligula mi, in luctus elit volutpat porta. Phasellus molestie diam vel
-                        nisi sodales, a eleifend augue laoreet. Sed nec eleifend justo. Nam et sollicitudin odio.
-                    </p>
-                    <h6>Sixth level</h6>
-                    <p>Cras in nibh lacinia, venenatis nisi et, auctor urna. Donec pulvinar lacus sed diam
-                        dignissim, ut
-                        eleifend eros accumsan. Phasellus non tortor eros. Ut sed rutrum lacus. Etiam purus nunc,
-                        scelerisque quis enim vitae, malesuada ultrices turpis. Nunc vitae maximus purus, nec
-                        consectetur dui. Suspendisse euismod, elit vel rutrum commodo, ipsum tortor maximus dui, sed
-                        varius sapien odio vitae est. Etiam at cursus metus.</p>
-                </div>
-            </section>
-        </div>
-    </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
@@ -1101,6 +1272,27 @@
             // Change image every 3 seconds (3000 milliseconds)
             setInterval(changeImage, 2500);
         });
+
+        function openLightbox(src, alt) {
+            const lb = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            img.alt = alt;
+            lb.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Close on Escape key
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+
+
     </script>
 
 </body>
